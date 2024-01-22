@@ -1,0 +1,30 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Dec 23 18:36:51 2023
+# Process ID: 29200
+# Current directory: C:/Users/Kithdara Hansamal/Downloads/SOC/SOC
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent29204 C:\Users\Kithdara Hansamal\Downloads\SOC\SOC\SOC.xpr
+# Log file: C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/vivado.log
+# Journal file: C:/Users/Kithdara Hansamal/Downloads/SOC/SOC\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.xpr}
+report_ip_status -name ip_status 
+update_compile_order -fileset sources_1
+upgrade_ip -srcset BLOCK_RAM_2 [get_ips  {BLOCK_RAM_2 Block_RAM Block_RAM_3 Block_RAM_4}] -log ip_upgrade.log
+export_ip_user_files -of_objects [get_ips {BLOCK_RAM_2 Block_RAM Block_RAM_3 Block_RAM_4}] -no_script -sync -force -quiet
+report_ip_status -name ip_status 
+generate_target all [get_files {C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.srcs/sources_1/ip/Block_RAM/Block_RAM.xci}]
+export_ip_user_files -of_objects [get_files {C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.srcs/sources_1/ip/Block_RAM/Block_RAM.xci}] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files {{C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.srcs/sources_1/ip/Block_RAM/Block_RAM.xci}}] -directory {C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.ip_user_files/sim_scripts} -ip_user_files_dir {C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.ip_user_files} -ipstatic_source_dir {C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.ip_user_files/ipstatic} -lib_map_path [list {modelsim=C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.cache/compile_simlib/modelsim} {questa=C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.cache/compile_simlib/questa} {riviera=C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.cache/compile_simlib/riviera} {activehdl=C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+create_fileset -blockset Block_RAM
+set_property top Block_RAM [get_fileset Block_RAM]
+move_files -fileset [get_fileset Block_RAM] [get_files -of_objects [get_fileset sources_1] {{C:/Users/Kithdara Hansamal/Downloads/SOC/SOC/SOC.srcs/sources_1/ip/Block_RAM/Block_RAM.xci}}]
+launch_run Block_RAM_synth_1
+wait_on_run Block_RAM_synth_1
+
+launch_simulation
+source BRAM_Test_tb.tcl
+close_sim
